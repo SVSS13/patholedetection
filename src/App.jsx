@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 import CameraCapture from "./CameraCapture";
 import "leaflet/dist/leaflet.css";
 import "./App.css";
-import "./camera.css";
+// import "./camera.css";
 
 /* 🔄 Fly map to current position */
 function LocateToPosition({ position }) {
