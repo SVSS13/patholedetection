@@ -1,4 +1,6 @@
+# ----------------------------
 # Logs
+# ----------------------------
 logs
 *.log
 npm-debug.log*
@@ -7,18 +9,31 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# ----------------------------
+# Dependencies
+# ----------------------------
+node_modules/
+
+# ----------------------------
+# Environment Variables
+# ----------------------------
 .env
 .env.*.local
+*.local
 
+# ----------------------------
+# Build Outputs
+# ----------------------------
+dist/
+dist-ssr/
+build/
 
-# Editor directories and files
+# ----------------------------
+# Editor / OS Files
+# ----------------------------
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -26,25 +41,21 @@ dist-ssr
 *.sln
 *.sw?
 
+# ----------------------------
 # Python
+# ----------------------------
 venv/
 backend/venv/
 __pycache__/
 *.pyc
 
-# Node
-node_modules/
-
-# Environment
-.env
-
-# Build
-dist/
-build/
-
-# Backend runtime data
+# ----------------------------
+# Backend Runtime Data
+# ----------------------------
 backend/uploads/
 backend/outputs/
 
-# ML models (optional but recommended)
+# ----------------------------
+# ML Models
+# ----------------------------
 backend/models/**/*.pt
