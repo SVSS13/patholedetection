@@ -145,5 +145,4 @@ const HereMap = ({ LAT, LONG, markers = [] }) => {
     />
   );
 };
-
 export default HereMap;
