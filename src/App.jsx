@@ -274,6 +274,9 @@ import CameraCapture from "./CameraCapture";
 import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import HereMap from "./HereMap";
+import Navbar from "./Navbar";
+import { check_IsmobileView } from "./MiniDb";
+import Mobileerror from "./Mobileerror";
 
 const App = () => {
   const [position, setPosition] = useState(null);
@@ -281,7 +284,8 @@ const App = () => {
   const [capturedUrl, setCapturedUrl] = useState(null);
   const [captures, setCaptures] = useState([]);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-
+  const [ShowInfo, setshowInfo] = useState(false)
+  const [Check, setcheck] = useState(check_IsmobileView)
   const watchIdRef = useRef(null);
 
   /* 🌐 Online / Offline */
@@ -336,13 +340,21 @@ const App = () => {
     setCapturedUrl(url);
   };
 
+  let Check_Byuser = localStorage.getItem("isuser_Mobile") == "true"
+  console.log(Check_Byuser,"Check_Byuser")
   /* ⬆️ Upload simulation */
   const uploadCaptured = () => {
+    alert("Captures")
+    if (!Check_Byuser) {
+      console.log("first")
+      return setshowInfo(true)
+    }
     if (!capturedUrl || !position) {
       toast.info("Capture image first", { position: "top-center" });
       return;
     }
 
+    setshowInfo(false)
     setCaptures((prev) => [
       ...prev,
       { pos: position, fileUrl: capturedUrl },
@@ -354,13 +366,18 @@ const App = () => {
 
   return (
     <>
+      <Navbar></Navbar>
+      {ShowInfo && <>
+
+        <Mobileerror />
+      </>}
       {/* ✅ ONLY ONE MAP */}
-    <HereMap
-  LAT={position?.lat}
-  LONG={position?.lng}
-  accuracy={position?.accuracy}
-  markers={captures}
-/>
+      <HereMap
+        LAT={position?.lat}
+        LONG={position?.lng}
+        accuracy={position?.accuracy}
+        markers={captures}
+      />
 
       {/* Status Banner */}
       {captures.length === 0 ? (
@@ -402,3 +419,4 @@ const App = () => {
 };
 
 export default App;
+
