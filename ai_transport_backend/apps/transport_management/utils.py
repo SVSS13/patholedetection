@@ -1,2 +1,6 @@
-def adjust_speed(current_speed, factor):
-    return current_speed * factor
+def classify_risk(risk):
+    if risk < 2:
+        return "Low"
+    elif risk < 5:
+        return "Medium"
+    return "High"

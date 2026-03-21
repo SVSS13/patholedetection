@@ -26,6 +26,68 @@ dist-ssr
 *.sln
 *.sw?
 
+# 🔥 Python / Django
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual Environment
+
+venv/
+env/
+ENV/
+
+# Django stuff
+
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Migrations (optional but recommended to ignore except **init**)
+
+*/migrations/*
+!*/migrations/**init**.py
+
+# Environment variables
+
+.env
+.env.*
+
+# VS Code / IDE
+
+.vscode/
+.idea/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Node / React (if in same repo)
+
+node_modules/
+dist/
+build/
+
+# Logs
+
+logs/
+*.log
+
+# Coverage / testing
+
+.coverage
+htmlcov/
+
+# Temporary files
+
+*.swp
+*~
+
 # Python
 venv/
 backend/venv/

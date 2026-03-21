@@ -1,6 +1,4 @@
-def classify_traffic(density):
-    if density < 5:
-        return "Low"
-    elif density < 15:
-        return "Medium"
-    return "High"
+def validate_input(vehicle_count, road_length):
+    if vehicle_count < 0 or road_length <= 0:
+        return False
+    return True

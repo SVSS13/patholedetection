@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import update_schedule
+from .views import smart_transport_control
 
 urlpatterns = [
-    path('update/', update_schedule),
+    path('control/', smart_transport_control),
 ]
