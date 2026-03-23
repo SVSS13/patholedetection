@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*.local
+
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +25,88 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 🔥 Python / Django
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual Environment
+
+venv/
+env/
+ENV/
+
+# Django stuff
+
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Migrations (optional but recommended to ignore except **init**)
+
+*/migrations/*
+!*/migrations/**init**.py
+
+# Environment variables
+
+.env
+.env.*
+
+# VS Code / IDE
+
+.vscode/
+.idea/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Node / React (if in same repo)
+
+node_modules/
+dist/
+build/
+
+# Logs
+
+logs/
+*.log
+
+# Coverage / testing
+
+.coverage
+htmlcov/
+
+# Temporary files
+
+*.swp
+*~
+
+# Python
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Environment
+.env
+
+# Build
+dist/
+build/
+
+# Backend runtime data
+backend/uploads/
+backend/outputs/
+
+# ML models (optional but recommended)
+backend/models/**/*.pt
