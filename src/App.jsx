@@ -277,9 +277,11 @@ import HereMap from "./HereMap";
 import Navbar from "./Navbar";
 import { check_IsmobileView } from "./MiniDb";
 import Mobileerror from "./Mobileerror";
+import Loader from "./Loader";
+import Waether from "./Waether";
 
 const App = () => {
-  const [position, setPosition] = useState(null);
+  const [position, setPosition] = useState([]);
   const [error, setError] = useState(null);
   const [capturedUrl, setCapturedUrl] = useState(null);
   const [captures, setCaptures] = useState([]);
@@ -287,7 +289,7 @@ const App = () => {
   const [ShowInfo, setshowInfo] = useState(false)
   const [Check, setcheck] = useState(check_IsmobileView)
   const watchIdRef = useRef(null);
-
+console.log(position,"p")
   /* 🌐 Online / Offline */
   useEffect(() => {
     const on = () => setIsOnline(true);
@@ -365,6 +367,7 @@ const App = () => {
 
   return (
     <>
+    <Waether lat={position} ></Waether>
       <Navbar></Navbar>
       {ShowInfo && <>
 
