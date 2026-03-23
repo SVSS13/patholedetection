@@ -164,6 +164,7 @@ import React, { useEffect, useState, useRef } from "react";
 import BackButton from "./BackButton";
 import Navbar from "./Navbar";
 import HereMap from "./HereMap";
+import Waether from "./Waether";
 
 function Addnearby() {
     const [Position, setPosition] = useState({});
@@ -235,6 +236,7 @@ function Addnearby() {
         if (isTablet) return "28px";
         return "24px";
     };
+    console.log(Position, "Position")
 
     return (
         <>
@@ -394,17 +396,39 @@ function Addnearby() {
                                         >
                                             📍 Current Location
                                         </label>
-                                        <p style={{ fontSize: "15px", color: "#166534", fontFamily: "monospace" }}>
-                                            {Position.lat
-                                                ? `${Position.lat}, ${Position.lng}`
-                                                : "🔄 Fetching location..."}
-                                        </p>
+                                     <p
+    style={{
+        fontSize: "14px",
+        color: "#444",
+        fontFamily: "monospace",
+        display: "flex",
+        alignItems: "center",
+        gap: "4px",
+        flexWrap: "wrap"
+    }}
+>
+    {Position?.lat ? (
+        `${Position.lat}, ${Position.lng}`
+    ) : (
+        <>
+            <span style={{ color: "#666" }}>🔄 Fetching your</span>
+            <span style={{ color: "#4B352A", fontWeight: "700" }}>location</span>
+            <span style={{ color: "#666" }}>&</span>
+            <span style={{ color: "#3F72AF", fontWeight: "500" }}>
+                real-time weather
+            </span>
+            <span style={{ color: "#999" }}>...</span>
+        </>
+    )}
+</p>
                                         {error && (
                                             <p style={{ color: "#dc2626", fontSize: "14px", marginTop: "8px" }}>
                                                 ⚠️ {error}
                                             </p>
                                         )}
                                     </div>
+                                    <Waether lat={Position} ></Waether>
+
                                 </div>
 
                                 {/* RIGHT COLUMN - Size & Description */}
@@ -494,17 +518,58 @@ function Addnearby() {
                                     <div
                                         style={{
                                             borderRadius: "12px",
-                                            border: "2px solid #e5e7eb",
+                                            border: "1px solid #e5e7eb",
                                             overflow: "hidden",
-                                            height: "250px",
+                                            width: "100%",
+                                            maxWidth: "100%",
+                                            display: "flex",
+                                            flexDirection: "column"
                                         }}
                                     >
-                                        <HereMap
-                                            LAT={Position?.lat}
-                                            LONG={Position?.lng}
-                                            accuracy={Position?.accuracy}
-                                        // markers={captures}
-                                        />
+
+                                        {/* Header */}
+                                        <div
+                                            style={{
+                                                padding: "10px 12px",
+                                                borderBottom: "1px solid #f1f1f1",
+                                                fontSize: "14px",
+                                                fontWeight: "600",
+                                                color: "#333"
+                                            }}
+                                        >
+                                            📍 Live Location Map
+                                        </div>
+
+                                        {/* Map Container */}
+                                        <div
+                                            style={{
+                                                width: "100%",
+                                                height: "400px", // better responsive height
+                                                position: "relative"
+                                            }}
+                                        >
+                                            {Position?.lat && Position?.lng ? (
+                                                <HereMap
+                                                    LAT={Number(Position.lat)}
+                                                    LONG={Number(Position.lng)}
+                                                    accuracy={Position?.accuracy}
+                                                />
+                                            ) : (
+                                                <div
+                                                    style={{
+                                                        height: "100%",
+                                                        display: "flex",
+                                                        justifyContent: "center",
+                                                        alignItems: "center",
+                                                        fontSize: "13px",
+                                                        color: "#888"
+                                                    }}
+                                                >
+                                                    Waiting for location...
+                                                </div>
+                                            )}
+                                        </div>
+
                                     </div>
                                 </div>
 
