@@ -367,7 +367,6 @@ console.log(position,"p")
 
   return (
     <>
-    <Waether lat={position} ></Waether>
       <Navbar></Navbar>
       {ShowInfo && <>
 
