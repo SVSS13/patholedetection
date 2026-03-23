@@ -1,8 +1,25 @@
+@import "tailwindcss";
+
 /* ROOT */
 html,
 body,
 #root {
   height: 100%;
+  margin: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* optional: remove default margin */
+body {
   margin: 0;
 }
 
@@ -40,7 +57,8 @@ body,
 /* 🔥 CAMERA PANEL (DEFAULT = MOBILE FIRST) */
 .camera-panel {
   position: absolute;
-  bottom: 70px; /* above navbar */
+  bottom: 70px;
+  /* above navbar */
   left: 50%;
   transform: translateX(-50%);
   width: 92%;
