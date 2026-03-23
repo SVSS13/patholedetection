@@ -279,6 +279,7 @@ import { check_IsmobileView } from "./MiniDb";
 import Mobileerror from "./Mobileerror";
 import Loader from "./Loader";
 import Waether from "./Waether";
+import UserLocationStatus from "./UserLocationStatus";
 
 const App = () => {
   const [position, setPosition] = useState([]);
@@ -289,7 +290,7 @@ const App = () => {
   const [ShowInfo, setshowInfo] = useState(false)
   const [Check, setcheck] = useState(check_IsmobileView)
   const watchIdRef = useRef(null);
-console.log(position,"p")
+  console.log(position, "p")
   /* 🌐 Online / Offline */
   useEffect(() => {
     const on = () => setIsOnline(true);
@@ -343,7 +344,7 @@ console.log(position,"p")
   };
 
   let Check_Byuser = localStorage.getItem("isuser_Mobile") == "true"
-  console.log(Check_Byuser,"Check_Byuser")
+  console.log(Check_Byuser, "Check_Byuser")
   /* ⬆️ Upload simulation */
   const uploadCaptured = () => {
     if (!Check_Byuser) {
@@ -372,6 +373,10 @@ console.log(position,"p")
 
         <Mobileerror />
       </>}
+      {position?.lat=="" && position?.lng=="" &&
+      <UserLocationStatus></UserLocationStatus>
+      }
+
       {/* ✅ ONLY ONE MAP */}
       <HereMap
         LAT={position?.lat}
