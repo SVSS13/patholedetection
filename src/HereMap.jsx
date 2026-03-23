@@ -353,7 +353,7 @@ const HereMap = ({ LAT, LONG, accuracy }) => {
   const mapInstance = useRef(null);
   const userMarkerRef = useRef(null);
   const accuracyCircleRef = useRef(null);
-
+console.log(LAT, LONG, accuracy,"markers")
   useEffect(() => {
     const loadScript = (src) =>
       new Promise((resolve, reject) => {

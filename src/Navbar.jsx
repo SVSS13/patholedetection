@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { FaMapMarkedAlt, FaSearchLocation, FaUserCircle } from "react-icons/fa";
 import MobileUseAlert from "./MobileUseAlert";
 import { check_IsmobileView } from "./MiniDb";
-
-function Navbar() {
-    const [active, setActive] = useState("report");
+import { Link } from "react-router-dom";
+function Navbar({ page }) {
+    console.log(page, "page")
+    const [active, setActive] = useState(page == undefined ? "report" : page);
 
     const navStyle = {
         position: "fixed",
@@ -51,26 +52,31 @@ function Navbar() {
             <MobileUseAlert></MobileUseAlert>
             <nav style={navStyle}>
                 <div style={containerStyle}>
-
-                    {/* Report */}
-                    <div style={getItemStyle("report")} onClick={() => setActive("report")}>
-                        <FaMapMarkedAlt style={iconStyle("report")} />
-                        <span>Report</span>
-                        {/* <span>{!check_IsmobileView?"Treu":"0"}</span> */}
-                    </div>
+                    <Link to="/">
+                        {/* Report */}
+                        <div style={getItemStyle("report")} onClick={() => setActive("report")}>
+                            <FaMapMarkedAlt style={iconStyle("report")} />
+                            <span>Report</span>
+                            {/* <span>{!check_IsmobileView?"Treu":"0"}</span> */}
+                        </div>
+                    </Link>
 
                     {/* Nearby */}
-                    <div style={getItemStyle("nearby")} onClick={() => setActive("nearby")}>
-                        <FaSearchLocation style={iconStyle("nearby")} />
-                        <span>Nearby</span>
-                    </div>
+                    <Link to="/nearby">
+                        <div style={getItemStyle("nearby")} onClick={() => setActive("nearby")}>
+                            <FaSearchLocation style={iconStyle("nearby")} />
+                            <span>Nearby</span>
+                        </div>
+                    </Link>
 
-                    {/* Profile */}
-                    <div style={getItemStyle("profile")} onClick={() => setActive("profile")}>
-                        <FaUserCircle style={iconStyle("profile")} />
-                        <span>Profile</span>
-                    </div>
+                    <Link to="/profile">
+                        {/* Profile */}
+                        <div style={getItemStyle("profile")} onClick={() => setActive("profile")}>
+                            <FaUserCircle style={iconStyle("profile")} />
+                            <span>Profile</span>
+                        </div>
 
+                    </Link>
                 </div>
             </nav>
         </>

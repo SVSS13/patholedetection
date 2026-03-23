@@ -344,7 +344,6 @@ const App = () => {
   console.log(Check_Byuser,"Check_Byuser")
   /* ⬆️ Upload simulation */
   const uploadCaptured = () => {
-    alert("Captures")
     if (!Check_Byuser) {
       console.log("first")
       return setshowInfo(true)
